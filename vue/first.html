@@ -1,0 +1,66 @@
+<html>
+<a href="javascript:void window.open('about:blank');">
+hello
+</a>
+
+<button id="my button">
+	Click button
+</button>
+
+
+<script>
+book={
+	topic:"JavaScript manning",
+	fat:true
+}
+
+var s="test string";
+s.len=4;
+console.log(s.len);
+
+
+console.log(book.topic)
+
+console.log("caf\u00e9")
+
+
+var scope="global"
+
+function f(){
+	console.log(scope)
+	scope="hi"
+	console.log(scope)
+}
+
+f();
+
+var point={x:1,y:2}
+var xin = "yx" in point;
+console.log(xin);
+
+
+var array=new Array();
+array["name"]="yangqi";
+array["age"]=19;
+
+console.log(array["name"]);
+
+for(var index in array){
+	console.log(index);
+}
+
+var b=document.getElementById("my button");
+b.onclick=function(){
+alert("onclick button")
+};
+
+b.addEventListener("click",function(){
+	alert("click listener button");
+});
+
+b.addEventListener("click",function(){
+	alert("click listener button");
+});
+
+</script>
+</html>

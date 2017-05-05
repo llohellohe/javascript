@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "vue"
+		},
+		{
+			"path": "node"
+		},
+		{
+			"path": "my-project"
+		},
+		{
+			"path": "es6"
+		}
+	]
+}

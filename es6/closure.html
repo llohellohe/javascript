@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<script type="text/javascript">
+	var scope="global scope";
+
+	function checkscope(){
+		var scope="local scope";
+		function f(){return scope};
+		return f;
+	}
+
+	console.log(checkscope()());
+
+	function f1(){
+		return 10;
+	}
+
+
+	var ui=function f2(c){var counter=c;counter++;return counter;}(12);
+	console.log(ui)
+
+	typeof f1
+
+
+	var f3=function(){console.log("fuck")}
+
+	f3();
+
+
+	var C =function(){}
+
+	var c=new C();
+
+
+</script>
+</body>
+
+</html>

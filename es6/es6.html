@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+
+<body>
+    <script type="text/javascript">
+    function foo(x, y = 10) {
+        console.log(x, y);
+    }
+    foo(1);
+    foo(1, 20);
+
+
+    var f = v => v;
+
+    var f1 = function(v) {
+        return v;
+    }
+
+    var v1 = f(1);
+    var v2 = f1(1);
+
+    v1 === v2
+
+    {
+        var a = 10;
+        let b = 77
+        fff=20;
+    }
+
+    console.log(fff);
+    console.log(a);
+
+    console.log("===========");
+
+    var a = [];
+    for (var i = 0; i < 10; i++) {
+        a[i] = function() {
+            console.log(i);
+        };
+    }
+    a[6]();
+    a[7]();
+    a[8]();
+    a[9]();
+    console.log("===========");
+
+    </script>
+    <script type="text/javascript">
+    (function() {
+        console.log("h ()")
+    })();
+    </script>>
+    <script src="./dist/build.js"></script>
+</body>

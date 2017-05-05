@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+	<script type="text/javascript">
+		var name=localStorage.name;
+		console.log(name);
+		if(name==null){
+			localStorage.setItem("name","yangqi");
+		}else{
+			localStorage.setItem("name","yq");
+		}
+		console.log(localStorage.getItem("name"));
+	</script>
+ <navbar hide-return="true" title="weex-sports">abc</navbar>
+</body>
+</html>

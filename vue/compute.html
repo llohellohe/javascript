@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue/dist/vue.js">
+    </script>
+</head>
+
+<body>
+    <div id="app1">
+        {{message}} {{reversedMessage}} {{rm()}}
+    </div>
+    <div id="demo" v-bind:class="{ active: isActive ,'text-danger': hasError }">
+        fullname:{{ fullName }} firstname:
+        <input v-model="firstName"> lastname:
+        <input v-model="lastName">
+        <h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <h1 v-show="ok">Hello!</h1>
+    </div>
+    <ul id="example-1">
+        <li v-for="(item,index) in items">
+            {{ item.message }} {{index}}
+        </li>
+    </ul>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#app1',
+        data: {
+            message: 'hello',
+            reverseMessage: 'olleh',
+        },
+        computed: {
+            reversedMessage: function() {
+                return this.message.split('').reverse().join('');
+            }
+        },
+        methods: {
+            rm: function() {
+                return "fuck!!"
+            }
+        }
+    });
+
+
+    var vm2 = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+            fullName: 'Foo Bar',
+            isActive: true,
+            hasError: true,
+            ok: true
+        },
+        watch: {
+            firstName: function(val) {
+                this.fullName = val + ' ' + this.lastName
+            },
+            lastName: function(val) {
+                this.fullName = this.firstName + ' ' + val
+            }
+        }
+    })
+
+
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            items: [{
+                message: 'Foo'
+            }, {
+                message: 'Bar'
+            }]
+        }
+    })
+    </script>
+</body>
+
+</html>

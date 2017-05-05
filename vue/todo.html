@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="https://unpkg.com/vue/dist/vue.js">
+</script>
+</head>
+<body>
+
+<div id="todo-list">
+	<span>My To Do List</span>
+	<ul>
+		<li v-for="(todo,index) in todos">{{todo}}  <button v-on:click="remove(index)">X</button></li>
+	</ul>
+
+	<div>
+		Add:<input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo"/>
+	</div>
+
+
+
+</div>
+
+<div id="example">
+	<my-component></my-component>
+</div>
+
+<div id="example-2">
+  <simple-counter></simple-counter>
+  <simple-counter></simple-counter>
+  <simple-counter></simple-counter>
+</div>
+
+<div id="example-1">
+	<child message="hello!"></child>
+</div>
+
+<script type="text/javascript">
+new Vue({
+  el: '#todo-list',
+  data: {
+    newTodoText: '',
+    todos: [
+      'Do the dishes',
+      'Take out the trash',
+      'Mow the lawn'
+    ]
+  },
+  methods: {
+    addNewTodo: function () {
+      this.todos.push(this.newTodoText)
+      this.newTodoText = ''
+    },
+    remove:function(index){
+    	this.todos.splice(index,1);
+    }
+  }
+})
+
+
+
+// 注册
+Vue.component('my-component', {
+  template: '<div>A custom component!</div>'
+})
+// 创建根实例
+new Vue({
+  el: '#example'
+})
+
+
+var data = { counter: 0 }
+Vue.component('simple-counter', {
+  template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+  // 技术上 data 的确是一个函数了，因此 Vue 不会警告，
+  // 但是我们返回给每个组件的实例的却引用了同一个data对象
+  data: function () {
+    return {counter:0}
+  }
+})
+new Vue({
+  el: '#example-2'
+})
+
+
+Vue.component('child', {
+  // 声明 props
+  props: ['message'],
+  // 就像 data 一样，prop 可以用在模板内
+  // 同样也可以在 vm 实例中像 “this.message” 这样使用
+  template: '<span>{{ message }}</span>'
+})
+// 创建根实例
+new Vue({
+  el: '#example-1'
+})
+</script>
+</body>
