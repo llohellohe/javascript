@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    	var DateComponent=React.createClass(
+    		{
+                getInitialState:function(){
+                    return {value:'defaultValue'}
+                },
+                onChange(e){
+                    this.setState({value:e.target.value});
+                },
+    			render:function(){
+    				return (
+    					<p>
+    						Hello, <input type="text" placeholder="Your name here" onChange={this.onChange}/>!
+    						It is {this.props.date.toTimeString()} , 
+                            <br/>
+                            Value is {this.state.value}
+    					</p>
+    				);
+    			}
+    		}
+    	);
+
+    	setInterval(function(){
+    		ReactDOM.render(
+    			<DateComponent date={new Date()}/>,
+    			document.getElementById('example')
+    		);
+    	},500);
+
+
+    </script>
+  </body>
+</html>
