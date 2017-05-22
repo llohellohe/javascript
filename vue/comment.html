@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="vue.js">
+</script>
+</head>
+<body>
+	<div id="comment-box">
+		{{title}}
+
+		<comment-list></comment-list>
+
+
+		<comment-form></comment-form>
+	</div>
+
+
+<script type="text/javascript">
+
+	data=[{name:'yangqi2',content:'评论1'},{name:'yangqi',content:'评论2'}];
+
+	Vue.component('comment-list',{
+		template:"<div> <h3>{{title}}</h3><ul><li v-for='item in data'><comment-item v-bind:name=item.name v-bind:content=item.content></comment-item></li></ul> </div> ",
+
+		data:function(){
+			return {
+				title:'I AM COMMENT LIST',
+				data:data
+			};
+		}
+	});
+
+	Vue.component('comment-item',{
+		props:['name','content'],
+		template:'<div> 作者： {{name}} ,内容： {{content}}</div>',
+	});
+
+	Vue.component('comment-form',{
+		template:"<div> <h3>{{title}}</h3> <input ref='inputx'  id='commentInput' type='text' placeholder='comment here' /> <button type='submit' v-on:click='postComment'>post</button></div>",
+		
+		data:function(){
+			return {
+				title:'comment form',
+				content:''
+			};
+		},
+		methods:{
+			postComment:function(){
+				let content=this.$refs.inputx.value;
+				console.log('post comment'+content);
+				data.push({name:'yangqi2',content:content});
+			}
+		}
+	});
+
+	new Vue({
+		el:'#comment-box',
+		data:{
+			title:'comment box here'
+		}
+	});
+</script>	
+
+</body>
+
